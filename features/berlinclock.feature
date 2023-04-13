@@ -24,3 +24,12 @@ Scenario: At 00:00:02, top light blinks, all other lights are off
     And all lights in the second row are off
     And all lights in the third row are off
     And all lights in the bottom row are off
+
+Scenario: At 00:01:01, bottom row first light blinks
+    Given a german citizen is standing in front of the Berlin Clock
+    When the current time is 00:01:01
+    Then the round yellow light at the top is off
+    And all lights in the top row are off
+    And all lights in the second row are off
+    And all lights in the third row are off
+    And only the first light in the bottom row blinks
