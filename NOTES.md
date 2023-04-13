@@ -7,7 +7,8 @@ Atomic behaviors:
 
 # Bottom row: determine which lights should be blinking based on the amount of minutes
 
-1 --> YOOO
+💡 0 --> OOOO
+💡 1 --> YOOO
 2 --> YYOO
 3 --> YYYO
 4 --> YYYY
