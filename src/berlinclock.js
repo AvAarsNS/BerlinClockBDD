@@ -5,17 +5,27 @@ function turnOnTheTopLight(numberOfSeconds) {
   return "O";
 }
 
+function turnOnLightsInBottomRow(numberOfMinutes) {
+  if (numberOfMinutes % 5 === 0) {
+    return "OOOO";
+  }
+  if (numberOfMinutes % 5 === 1) {
+    return "YOOO";
+  }
+}
+
 function berlinClock(hours, minutes, seconds) {
   const output = [];
   const numberOfSeconds = parseInt(seconds, 10);
+  const numberOfMinutes = parseInt(minutes, 10);
 
   output.push(turnOnTheTopLight(numberOfSeconds));
   output.push("OOOO");
   output.push("OOOO");
   output.push("OOOOOOOOOOO");
-  output.push("OOOO");
+  output.push(turnOnLightsInBottomRow(numberOfMinutes));
 
   return output;
 }
 
-module.exports = { berlinClock, turnOnTheTopLight };
+module.exports = { berlinClock, turnOnTheTopLight, turnOnLightsInBottomRow };
