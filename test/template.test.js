@@ -1,7 +1,10 @@
-const templateFunction = require("../src/template");
+const {turnOnTheTopLight} = require("../src/template");
 
-describe("TemplateFunction should return half of the provided", () => {
-  it("2 -> 1 ", () => {
-    expect(templateFunction(2)).toEqual(1);
+describe("The top light of the Berlin Clock should only blink when the amount of seconds is even", () => {
+  it("1 --> 🌑", () => {
+    expect(turnOnTheTopLight(1)).toEqual("O");
+  });
+  it("2 --> 💡", () => {
+    expect(turnOnTheTopLight(2)).toEqual("Y");
   });
 });

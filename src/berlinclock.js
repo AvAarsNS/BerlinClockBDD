@@ -1,7 +1,15 @@
-function berlinClock() {
-  const output = [];
+function turnOnTheTopLight(numberOfSeconds) {
+  if (numberOfSeconds % 2 === 0) {
+    return "Y";
+  }
+  return "O";
+}
 
-  output.push("O");
+function berlinClock(hours, minutes, seconds) {
+  const output = [];
+  const numberOfSeconds = parseInt(seconds, 10);
+
+  output.push(turnOnTheTopLight(numberOfSeconds));
   output.push("OOOO");
   output.push("OOOO");
   output.push("OOOOOOOOOOO");
@@ -10,8 +18,4 @@ function berlinClock() {
   return output;
 }
 
-function topLight() {
-  return "O";
-}
-
-module.exports = { berlinClock, topLight };
+module.exports = { berlinClock, turnOnTheTopLight };

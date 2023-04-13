@@ -5,8 +5,8 @@ let output = [];
 
 Given("a german citizen is standing in front of the Berlin Clock", () => {});
 
-When(/^the current time is (\d+:\d+:\d+)$/, (time) => {
-  output = berlinClock(time);
+When(/^the current time is (\d+):(\d+):(\d+)$/, (hours, minutes, seconds) => {
+  output = berlinClock(hours, minutes, seconds);
 });
 
 Then("the round yellow light at the top is off", () => {

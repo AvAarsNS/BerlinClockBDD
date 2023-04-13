@@ -1,5 +1,8 @@
-function templateFunction(x) {
-  return x / 2;
+function turnOnTheTopLight(numberOfSeconds) {
+  if (numberOfSeconds % 2 === 0) {
+    return "Y";
+  }
+  return "O";
 }
 
-module.exports = templateFunction;
+module.exports = { turnOnTheTopLight };
