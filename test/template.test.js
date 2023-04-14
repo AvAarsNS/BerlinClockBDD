@@ -16,4 +16,16 @@ describe("The bottom row of the Berlin Clock contains four lights", () => {
   it('1 minute --> 💡⚫⚫⚫', () => {
     expect(turnOnLightsInBottomRow(1)).toEqual("YOOO");
   });
+  it('2 minutes --> 💡💡⚫⚫', () => {
+    expect(turnOnLightsInBottomRow(2)).toEqual("YYOO");
+  });
+  it('3 minutes --> 💡💡💡⚫', () => {
+    expect(turnOnLightsInBottomRow(3)).toEqual("YYYO");
+  });
+  it('4 minutes --> 💡💡💡💡', () => {
+    expect(turnOnLightsInBottomRow(4)).toEqual("YYYY");
+  });
+  it('7 minutes --> 💡💡⚫⚫', () => {
+    expect(turnOnLightsInBottomRow(7)).toEqual("YYOO");
+  }); 
 });

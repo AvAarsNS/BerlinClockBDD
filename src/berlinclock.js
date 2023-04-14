@@ -12,6 +12,13 @@ function turnOnLightsInBottomRow(numberOfMinutes) {
   if (numberOfMinutes % 5 === 1) {
     return "YOOO";
   }
+  if (numberOfMinutes % 5 === 2) {
+    return "YYOO";
+  }
+  if (numberOfMinutes % 5 === 3) {
+    return "YYYO";
+  }
+  else return "YYYY";
 }
 
 function berlinClock(hours, minutes, seconds) {

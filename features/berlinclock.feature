@@ -33,3 +33,39 @@ Scenario: At 00:01:01, bottom row first light blinks
     And all lights in the second row are off
     And all lights in the third row are off
     And only the first light in the bottom row blinks
+
+Scenario: At 00:02:01, bottom row first two lights are yellow
+    Given a german citizen is standing in front of the Berlin Clock
+    When the current time is 00:02:01
+    Then the round yellow light at the top is off
+    And all lights in the top row are off
+    And all lights in the second row are off
+    And all lights in the third row are off
+    And the first two lights in the bottom row are yellow
+
+Scenario: At 00:03:01, bottom row first three lights are yellow
+    Given a german citizen is standing in front of the Berlin Clock
+    When the current time is 00:03:01
+    Then the round yellow light at the top is off
+    And all lights in the top row are off
+    And all lights in the second row are off
+    And all lights in the third row are off
+    And the first three lights in the bottom row are yellow
+
+Scenario: At 00:04:01, bottom row all lights are yellow
+    Given a german citizen is standing in front of the Berlin Clock
+    When the current time is 00:04:01
+    Then the round yellow light at the top is off
+    And all lights in the top row are off
+    And all lights in the second row are off
+    And all lights in the third row are off
+    And all the lights in the bottom row are yellow
+
+Scenario: At 00:07:01, bottom row first two lights are yellow
+    Given a german citizen is standing in front of the Berlin Clock
+    When the current time is 00:07:01
+    Then the round yellow light at the top is off
+    And all lights in the top row are off
+    And all lights in the second row are off
+    And all lights in the third row are off
+    And the first two lights in the bottom row are yellow

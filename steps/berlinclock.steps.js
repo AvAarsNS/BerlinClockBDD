@@ -33,6 +33,18 @@ And("only the first light in the bottom row blinks", () => {
   expect(output[4]).toEqual("YOOO");
 });
 
+And("the first two lights in the bottom row are yellow", () => {
+  expect(output[4]).toEqual("YYOO");
+});
+
+And("the first three lights in the bottom row are yellow", () => {
+  expect(output[4]).toEqual("YYYO");
+});
+
+And("all the lights in the bottom row are yellow", () => {
+  expect(output[4]).toEqual("YYYY");
+});
+
 Then("the round yellow light at the top blinks", () => {
   expect(output[0]).toEqual("Y");
 });

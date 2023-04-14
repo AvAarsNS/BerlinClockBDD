@@ -9,12 +9,7 @@ Atomic behaviors:
 
 💡 0 --> OOOO
 💡 1 --> YOOO
-2 --> YYOO
-3 --> YYYO
-4 --> YYYY
-5 --> OOOO
-6 --> YOOO
-7 --> YYOO
-8 --> YYYO
-9 --> YYYY
-10 --> OOOO
+💡 2 --> YYOO
+💡 3 --> YYYO
+💡 4 --> YYYY
+💡 7 --> YYOO
