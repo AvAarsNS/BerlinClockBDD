@@ -5,20 +5,21 @@ function turnOnTheTopLight(numberOfSeconds) {
   return "O";
 }
 
+function turnOnLightsInThirdRow(numberOfMinutes) {
+  if (numberOfMinutes === 5) {
+    return "YOOOOOOOOOO";
+  }
+  return "OOOOOOOOOOO";
+}
+
 function turnOnLightsInBottomRow(numberOfMinutes) {
-  if (numberOfMinutes % 5 === 0) {
-    return "OOOO";
-  }
-  if (numberOfMinutes % 5 === 1) {
-    return "YOOO";
-  }
-  if (numberOfMinutes % 5 === 2) {
-    return "YYOO";
-  }
-  if (numberOfMinutes % 5 === 3) {
-    return "YYYO";
-  }
-  else return "YYYY";
+  const numberOfLightsOn = numberOfMinutes % 5;
+  const numberOfLightsOff = 4 - numberOfLightsOn;
+
+  const onLights = "Y".repeat(numberOfLightsOn);
+  const offLights = "O".repeat(numberOfLightsOff);
+
+  return onLights + offLights;
 }
 
 function berlinClock(hours, minutes, seconds) {
@@ -29,10 +30,15 @@ function berlinClock(hours, minutes, seconds) {
   output.push(turnOnTheTopLight(numberOfSeconds));
   output.push("OOOO");
   output.push("OOOO");
-  output.push("OOOOOOOOOOO");
+  output.push(turnOnLightsInThirdRow(numberOfMinutes));
   output.push(turnOnLightsInBottomRow(numberOfMinutes));
 
   return output;
 }
 
-module.exports = { berlinClock, turnOnTheTopLight, turnOnLightsInBottomRow };
+module.exports = {
+  berlinClock,
+  turnOnTheTopLight,
+  turnOnLightsInThirdRow,
+  turnOnLightsInBottomRow,
+};

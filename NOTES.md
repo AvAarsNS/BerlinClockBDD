@@ -13,3 +13,19 @@ Atomic behaviors:
 💡 3 --> YYYO
 💡 4 --> YYYY
 💡 7 --> YYOO
+
+# Third row: determine which lights should be blinking based on the amount of minutes, divided by 5
+
+0  --> OOOOOOOOOOO 💡
+1  --> OOOOOOOOOOO
+5  --> YOOOOOOOOOO
+10 --> YYOOOOOOOOO
+15 --> YYROOOOOOOO
+20 --> YYRYOOOOOOO
+25 --> YYRYYOOOOOO
+30 --> YYRYYROOOOO
+35 --> YYRYYRYOOOO
+40 --> YYRYYRYYOOO
+45 --> YYRYYRYYROO
+50 --> YYRYYRYYRYO
+55 --> YYRYYRYYRYY
