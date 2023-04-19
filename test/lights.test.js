@@ -17,6 +17,18 @@ describe("The third row of the Berlin Clock contains eleven lights, increasing e
   it("0 minutes --> ⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫", () => {
     expect(turnOnLightsInThirdRow(0)).toEqual("OOOOOOOOOOO");
   });
+  it("1 minute --> ⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫", () => {
+    expect(turnOnLightsInThirdRow(1)).toEqual("OOOOOOOOOOO");
+  });
+  it("5 minutes --> 🟡⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫", () => {
+    expect(turnOnLightsInThirdRow(5)).toEqual("YOOOOOOOOOO");
+  });
+  it("10 minutes --> 🟡🟡⚫⚫⚫⚫⚫⚫⚫⚫⚫", () => {
+    expect(turnOnLightsInThirdRow(10)).toEqual("YYOOOOOOOOO");
+  });
+  it("15 minutes --> 🟡🟡😡⚫⚫⚫⚫⚫⚫⚫⚫", () => {
+    expect(turnOnLightsInThirdRow(15)).toEqual("YYROOOOOOOO");
+  });
 });
 
 describe("The bottom row of the Berlin Clock contains four lights", () => {

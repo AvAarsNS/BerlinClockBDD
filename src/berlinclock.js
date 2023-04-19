@@ -5,11 +5,40 @@ function turnOnTheTopLight(numberOfSeconds) {
   return "O";
 }
 
+// function turnOnLightsInThirdRow(numberOfMinutes) {
+//   const numberOfLightsOn = Math.floor(numberOfMinutes / 5);
+//   const numberOfLightsOff = 11 - numberOfLightsOn;
+
+//   const onLights = "Y".repeat(numberOfLightsOn);
+//   const offLights = "O".repeat(numberOfLightsOff);
+
+//   return onLights + offLights;
+// }
+
 function turnOnLightsInThirdRow(numberOfMinutes) {
-  if (numberOfMinutes === 5) {
-    return "YOOOOOOOOOO";
+  let lightsThirdRow = "";
+  const onCount = Math.floor(numberOfMinutes / 5);
+
+  for (let index = 0; index < 11; index++) {
+    if (index < onCount) {
+      lightsThirdRow += "Y";
+    } else {
+      lightsThirdRow += "O";
+    }
   }
-  return "OOOOOOOOOOO";
+  let thirdRowWithRedLightsOn = turnOnRedLightsInThirdRow(onCount, lightsThirdRow)
+  return thirdRowWithRedLightsOn;
+}
+
+function turnOnRedLightsInThirdRow(onCount, lightsThirdRow) {
+  let newLightsThirdRow = '';
+  for (let index = 0; index < 11; index++) {
+    if ((index == 2)) {
+      newLightsThirdRow += 'R';
+    } else {
+      newLightsThirdRow += lightsThirdRow.charAt(index)
+    }
+  } return newLightsThirdRow
 }
 
 function turnOnLightsInBottomRow(numberOfMinutes) {
