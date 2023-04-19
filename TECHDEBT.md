@@ -1,0 +1,1 @@
+The bottom row unit tests can be simplified using test.each

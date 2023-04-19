@@ -14,20 +14,22 @@ describe("The top light of the Berlin Clock should only blink when the amount of
 });
 
 describe("The third row of the Berlin Clock contains eleven lights, increasing each 5 minutes", () => {
-  it("0 minutes --> ⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫", () => {
-    expect(turnOnLightsInThirdRow(0)).toEqual("OOOOOOOOOOO");
-  });
-  it("1 minute --> ⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫", () => {
-    expect(turnOnLightsInThirdRow(1)).toEqual("OOOOOOOOOOO");
-  });
-  it("5 minutes --> 🟡⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫", () => {
-    expect(turnOnLightsInThirdRow(5)).toEqual("YOOOOOOOOOO");
-  });
-  it("10 minutes --> 🟡🟡⚫⚫⚫⚫⚫⚫⚫⚫⚫", () => {
-    expect(turnOnLightsInThirdRow(10)).toEqual("YYOOOOOOOOO");
-  });
-  it("15 minutes --> 🟡🟡😡⚫⚫⚫⚫⚫⚫⚫⚫", () => {
-    expect(turnOnLightsInThirdRow(15)).toEqual("YYROOOOOOOO");
+  test.each([
+    [0, "OOOOOOOOOOO"],
+    [1, "OOOOOOOOOOO"],
+    [5, "YOOOOOOOOOO"],
+    [10, "YYOOOOOOOOO"],
+    [15, "YYROOOOOOOO"],
+    [20, "YYRYOOOOOOO"],
+    [25, "YYRYYOOOOOO"],
+    [30, "YYRYYROOOOO"],
+    [35, "YYRYYRYOOOO"],
+    [40, "YYRYYRYYOOO"],
+    [45, "YYRYYRYYROO"],
+    [50, "YYRYYRYYRYO"],
+    [55, "YYRYYRYYRYY"],
+  ])("%d minutes -> %s", (input, expected) => {
+    expect(turnOnLightsInThirdRow(input)).toEqual(expected);
   });
 });
 
