@@ -29,6 +29,10 @@ And("all lights in the second row are off", () => {
   expect(output[2]).toEqual("OOOO");
 });
 
+And("the second row shows 🔴🔴🔴⚫", () => {
+  expect(output[2]).toEqual("RRRO");
+});
+
 // -- Third row
 And("all lights in the third row are off", () => {
   expect(output[3]).toEqual("OOOOOOOOOOO");
@@ -40,6 +44,10 @@ And("only the first light in the third row is yellow", () => {
 
 And("the third row shows 🟡🟡🔴🟡🟡🔴🟡🟡🔴⚫⚫", () => {
   expect(output[3]).toEqual("YYRYYRYYROO");
+});
+
+And("the third row shows 🟡🟡🔴🟡🟡🔴🟡🟡🔴🟡🟡", () => {
+  expect(output[3]).toEqual("YYRYYRYYRYY");
 });
 
 // -- Bottom row
