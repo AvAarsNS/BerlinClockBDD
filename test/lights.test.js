@@ -3,6 +3,7 @@ const {
   turnOnLightsInSecondRow,
   turnOnLightsInThirdRow,
   turnOnLightsInBottomRow,
+  turnOnLightsInTopRow
 } = require("../src/berlinclock");
 
 describe("The top light of the Berlin Clock should only blink when the amount of seconds is even", () => {
@@ -11,6 +12,25 @@ describe("The top light of the Berlin Clock should only blink when the amount of
   });
   it("2 --> 💡", () => {
     expect(turnOnTheTopLight(2)).toEqual("Y");
+  });
+});
+
+describe("The top row of the Berlin Clock contains four lights, increasing each 5 hours", () => {
+  test.each([
+    [0, "OOOO"],
+    [1, "OOOO"],
+    [2, "OOOO"],
+    [5, "ROOO"],
+    [6, "ROOO"],
+    [10, "RROO"],
+    [14, "RROO"],
+    [15, "RRRO"],
+    [17, "RRRO"],
+    [18, "RRRO"],
+    [20, "RRRR"],
+    [24, "RRRR"],
+  ])("%d hours -> %s", (input, expected) => {
+    expect(turnOnLightsInTopRow(input)).toEqual(expected);
   });
 });
 

@@ -106,11 +106,11 @@ Scenario: At 03:59:02 the top light should blink, in the 2nd row the first 3 lig
     And the third row shows 🟡🟡🔴🟡🟡🔴🟡🟡🔴🟡🟡
     And all the lights in the bottom row are yellow
 
-Scenario: At 03:59:02 the top light should blink, in the 2nd row the first 3 lights should be on and all lights should be on in the third and bottom row 
+Scenario: At 13:59:02 the top light should blink, in the first row the first 2 lights should be on, in the 2nd row the first 3 lights should be on and all lights should be on in the third and bottom row 
     Given a german citizen is standing in front of the Berlin Clock
-    When the current time is 03:59:02
+    When the current time is 13:59:02
     Then the round yellow light at the top is on
-    And all lights in the top row are off
+    And the top row shows 🔴🔴⚫⚫
     And the second row shows 🔴🔴🔴⚫
     And the third row shows 🟡🟡🔴🟡🟡🔴🟡🟡🔴🟡🟡
     And all the lights in the bottom row are yellow

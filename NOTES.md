@@ -43,3 +43,17 @@ Atomic behaviors:
 9 --> RRRR 💡
 10 --> OOOO 💡
 11 --> ROOO 💡
+
+# Top row: determine which lights should be on. A light turns on for every 5 hours.
+0 --> OOOO 💡
+1 --> OOOO 💡
+2 --> OOOO 💡
+5 --> ROOO 💡
+6 --> ROOO 💡
+10 --> RROO 💡
+14 --> RROO 💡
+15 --> RRRO 💡
+17 --> RRRO 💡
+18 --> RRRO 💡
+20 --> RRRR 💡
+24 --> RRRR 💡

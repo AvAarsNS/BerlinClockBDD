@@ -19,9 +19,13 @@ Then("the round yellow light at the top is on", () => {
   expect(output[0]).toEqual("Y");
 });
 
-// -- First row
+// -- TOP row
 And("all lights in the top row are off", () => {
   expect(output[1]).toEqual("OOOO");
+});
+
+And("the top row shows 🔴🔴⚫⚫", () => {
+  expect(output[1]).toEqual("RROO");
 });
 
 // -- Second row

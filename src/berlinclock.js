@@ -5,6 +5,16 @@ function turnOnTheTopLight(numberOfSeconds) {
   return "O";
 }
 
+function turnOnLightsInTopRow(numberOfHours) {
+  const numberOfLightsOn = Math.floor(numberOfHours / 5);
+  const numberOfLightsOff = 4 - numberOfLightsOn;
+
+  const onLights = "R".repeat(numberOfLightsOn);
+  const offLights = "O".repeat(numberOfLightsOff);
+
+  return onLights + offLights;
+}
+
 function turnOnLightsInSecondRow(numberOfHours) {
   const numberOfLightsOn = numberOfHours % 5;
   const numberOfLightsOff = 4 - numberOfLightsOn;
@@ -48,7 +58,7 @@ function berlinClock(hours, minutes, seconds) {
   const numberOfHours = parseInt(hours, 10);
 
   output.push(turnOnTheTopLight(numberOfSeconds));
-  output.push("OOOO");
+  output.push(turnOnLightsInTopRow(numberOfHours));
   output.push(turnOnLightsInSecondRow(numberOfHours));
   output.push(turnOnLightsInThirdRow(numberOfMinutes));
   output.push(turnOnLightsInBottomRow(numberOfMinutes));
@@ -59,6 +69,7 @@ function berlinClock(hours, minutes, seconds) {
 module.exports = {
   berlinClock,
   turnOnTheTopLight,
+  turnOnLightsInTopRow,
   turnOnLightsInSecondRow,
   turnOnLightsInThirdRow,
   turnOnLightsInBottomRow,
