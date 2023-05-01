@@ -3,93 +3,93 @@ const {
   turnOnLightsInSecondRow,
   turnOnLightsInThirdRow,
   turnOnLightsInBottomRow,
-  turnOnLightsInTopRow
+  turnOnLightsInTopRow,
 } = require("../src/berlinclock");
 
 describe("The top light of the Berlin Clock should only blink when the amount of seconds is even", () => {
-  it("1 --> 🌑", () => {
+  it("1 --> ⚫", () => {
     expect(turnOnTheTopLight(1)).toEqual("O");
   });
-  it("2 --> 💡", () => {
+  it("2 --> 🟡", () => {
     expect(turnOnTheTopLight(2)).toEqual("Y");
   });
 });
 
 describe("The top row of the Berlin Clock contains four lights, increasing each 5 hours", () => {
-  test.each([
-    [0, "OOOO"],
-    [1, "OOOO"],
-    [2, "OOOO"],
-    [5, "ROOO"],
-    [6, "ROOO"],
-    [10, "RROO"],
-    [14, "RROO"],
-    [15, "RRRO"],
-    [17, "RRRO"],
-    [18, "RRRO"],
-    [20, "RRRR"],
-    [24, "RRRR"],
-  ])("%d hours -> %s", (input, expected) => {
+  test.each`
+    input | expected  | emoji
+    ${0}  | ${"OOOO"} | ${"⚫⚫⚫⚫"}
+    ${1}  | ${"OOOO"} | ${"⚫⚫⚫⚫"}
+    ${2}  | ${"OOOO"} | ${"⚫⚫⚫⚫"}
+    ${5}  | ${"ROOO"} | ${"🔴⚫⚫⚫"}
+    ${6}  | ${"ROOO"} | ${"🔴⚫⚫⚫"}
+    ${10} | ${"RROO"} | ${"🔴🔴⚫⚫"}
+    ${14} | ${"RROO"} | ${"🔴🔴⚫⚫"}
+    ${15} | ${"RRRO"} | ${"🔴🔴🔴⚫"}
+    ${17} | ${"RRRO"} | ${"🔴🔴🔴⚫"}
+    ${18} | ${"RRRO"} | ${"🔴🔴🔴⚫"}
+    ${20} | ${"RRRR"} | ${"🔴🔴🔴🔴"}
+    ${24} | ${"RRRR"} | ${"🔴🔴🔴🔴"}
+  `("$input minutes --> $emoji", ({ input, expected }) => {
     expect(turnOnLightsInTopRow(input)).toEqual(expected);
   });
 });
 
-describe("The second row of the Berlin Clock contains four lights, increasing each hour", () => {
-  test.each([
-    [0, "OOOO"],
-    [1, "ROOO"],
-    [2, "RROO"],
-    [3, "RRRO"],
-    [4, "RRRR"],
-    [5, "OOOO"],
-    [6, "ROOO"],
-    [7, "RROO"],
-    [8, "RRRO"],
-    [9, "RRRR"],
-    [10, "OOOO"],
-    [11, "ROOO"],
-  ])("%d hours -> %s", (input, expected) => {
+describe("The second row of the Berlin Clock contains four lights, increasing each hour. This resets every 5 hours.", () => {
+  test.each`
+    input | expected  | emoji
+    ${0}  | ${"OOOO"} | ${"⚫⚫⚫⚫"}
+    ${1}  | ${"ROOO"} | ${"🔴⚫⚫⚫"}
+    ${2}  | ${"RROO"} | ${"🔴🔴⚫⚫"}
+    ${3}  | ${"RRRO"} | ${"🔴🔴🔴⚫"}
+    ${4}  | ${"RRRR"} | ${"🔴🔴🔴🔴"}
+    ${5}  | ${"OOOO"} | ${"⚫⚫⚫⚫"}
+    ${6}  | ${"ROOO"} | ${"🔴⚫⚫⚫"}
+    ${7}  | ${"RROO"} | ${"🔴🔴⚫⚫"}
+    ${8}  | ${"RRRO"} | ${"🔴🔴🔴⚫"}
+    ${9}  | ${"RRRR"} | ${"🔴🔴🔴🔴"}
+    ${10} | ${"OOOO"} | ${"⚫⚫⚫⚫"}
+  `("$input minutes --> $emoji", ({ input, expected }) => {
     expect(turnOnLightsInSecondRow(input)).toEqual(expected);
   });
 });
 
 describe("The third row of the Berlin Clock contains eleven lights, increasing each 5 minutes", () => {
-  test.each([
-    [0, "OOOOOOOOOOO"],
-    [1, "OOOOOOOOOOO"],
-    [5, "YOOOOOOOOOO"],
-    [10, "YYOOOOOOOOO"],
-    [15, "YYROOOOOOOO"],
-    [20, "YYRYOOOOOOO"],
-    [25, "YYRYYOOOOOO"],
-    [30, "YYRYYROOOOO"],
-    [35, "YYRYYRYOOOO"],
-    [40, "YYRYYRYYOOO"],
-    [45, "YYRYYRYYROO"],
-    [50, "YYRYYRYYRYO"],
-    [55, "YYRYYRYYRYY"],
-  ])("%d minutes -> %s", (input, expected) => {
+  test.each`
+    input | expected         | emoji
+    ${0}  | ${"OOOOOOOOOOO"} | ${"⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫"}
+    ${1}  | ${"OOOOOOOOOOO"} | ${"⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫"}
+    ${5}  | ${"YOOOOOOOOOO"} | ${"🟡⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫"}
+    ${10} | ${"YYOOOOOOOOO"} | ${"🟡🟡⚫⚫⚫⚫⚫⚫⚫⚫⚫"}
+    ${15} | ${"YYROOOOOOOO"} | ${"🟡🟡🔴⚫⚫⚫⚫⚫⚫⚫⚫"}
+    ${20} | ${"YYRYOOOOOOO"} | ${"🟡🟡🔴🟡⚫⚫⚫⚫⚫⚫⚫"}
+    ${25} | ${"YYRYYOOOOOO"} | ${"🟡🟡🔴🟡🟡⚫⚫⚫⚫⚫⚫"}
+    ${30} | ${"YYRYYROOOOO"} | ${"🟡🟡🔴🟡🟡🔴⚫⚫⚫⚫⚫"}
+    ${35} | ${"YYRYYRYOOOO"} | ${"🟡🟡🔴🟡🟡🔴🟡⚫⚫⚫⚫"}
+    ${40} | ${"YYRYYRYYOOO"} | ${"🟡🟡🔴🟡🟡🔴🟡🟡⚫⚫⚫"}
+    ${45} | ${"YYRYYRYYROO"} | ${"🟡🟡🔴🟡🟡🔴🟡🟡🔴⚫⚫"}
+    ${50} | ${"YYRYYRYYRYO"} | ${"🟡🟡🔴🟡🟡🔴🟡🟡🔴🟡⚫"}
+    ${55} | ${"YYRYYRYYRYY"} | ${"🟡🟡🔴🟡🟡🔴🟡🟡🔴🟡🟡"}
+  `("$input minutes --> $emoji", ({ input, expected }) => {
     expect(turnOnLightsInThirdRow(input)).toEqual(expected);
   });
 });
 
-describe("The bottom row of the Berlin Clock contains four lights", () => {
-  it("0 minute --> ⚫⚫⚫⚫", () => {
-    expect(turnOnLightsInBottomRow(0)).toEqual("OOOO");
-  });
-  it("1 minute --> 💡⚫⚫⚫", () => {
-    expect(turnOnLightsInBottomRow(1)).toEqual("YOOO");
-  });
-  it("2 minutes --> 💡💡⚫⚫", () => {
-    expect(turnOnLightsInBottomRow(2)).toEqual("YYOO");
-  });
-  it("3 minutes --> 💡💡💡⚫", () => {
-    expect(turnOnLightsInBottomRow(3)).toEqual("YYYO");
-  });
-  it("4 minutes --> 💡💡💡💡", () => {
-    expect(turnOnLightsInBottomRow(4)).toEqual("YYYY");
-  });
-  it("7 minutes --> 💡💡⚫⚫", () => {
-    expect(turnOnLightsInBottomRow(7)).toEqual("YYOO");
+describe("The bottom row of the Berlin Clock contains four lights, where each minute an extra light turns on. Each 5 minutes this resets.", () => {
+  test.each`
+    input | expected  | emoji
+    ${0}  | ${"OOOO"} | ${"⚫⚫⚫⚫"}
+    ${1}  | ${"YOOO"} | ${"🟡⚫⚫⚫"}
+    ${2}  | ${"YYOO"} | ${"🟡🟡⚫⚫"}
+    ${3}  | ${"YYYO"} | ${"🟡🟡🟡⚫"}
+    ${4}  | ${"YYYY"} | ${"🟡🟡🟡🟡"}
+    ${5}  | ${"OOOO"} | ${"⚫⚫⚫⚫"}
+    ${6}  | ${"YOOO"} | ${"🟡⚫⚫⚫"}
+    ${7}  | ${"YYOO"} | ${"🟡🟡⚫⚫"}
+    ${8}  | ${"YYYO"} | ${"🟡🟡🟡⚫"}
+    ${9}  | ${"YYYY"} | ${"🟡🟡🟡🟡"}
+    ${10} | ${"OOOO"} | ${"⚫⚫⚫⚫"}
+  `("$input minutes --> $emoji", ({ input, expected }) => {
+    expect(turnOnLightsInBottomRow(input)).toEqual(expected);
   });
 });

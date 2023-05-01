@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 function turnOnTheTopLight(numberOfSeconds) {
   if (numberOfSeconds % 2 === 0) {
     return "Y";
@@ -53,9 +54,9 @@ function turnOnLightsInBottomRow(numberOfMinutes) {
 
 function berlinClock(hours, minutes, seconds) {
   const output = [];
-  const numberOfSeconds = parseInt(seconds, 10);
-  const numberOfMinutes = parseInt(minutes, 10);
-  const numberOfHours = parseInt(hours, 10);
+  const numberOfSeconds = parseInt(seconds);
+  const numberOfMinutes = parseInt(minutes);
+  const numberOfHours = parseInt(hours);
 
   output.push(turnOnTheTopLight(numberOfSeconds));
   output.push(turnOnLightsInTopRow(numberOfHours));

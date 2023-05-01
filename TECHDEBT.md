@@ -1,1 +1,5 @@
-The bottom row unit tests can be simplified using test.each
+- Give all magic numbers a name
+- Turning the lights on based on number of on/off lights can be refactored to a seperate function
+- Extract out the O/Y/R strings to constants so they can be named
+- colourOfLightOnInThirdRow can be made more readable
+- turnOnLightsInThirdRow can be made more readable, maybe with the separate function for turning on the lights
