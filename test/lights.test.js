@@ -30,7 +30,7 @@ describe("The top row of the Berlin Clock contains four lights, increasing each 
     ${18} | ${"RRRO"} | ${"🔴🔴🔴⚫"}
     ${20} | ${"RRRR"} | ${"🔴🔴🔴🔴"}
     ${24} | ${"RRRR"} | ${"🔴🔴🔴🔴"}
-  `("$input minutes --> $emoji", ({ input, expected }) => {
+  `("$input hours --> $emoji", ({ input, expected }) => {
     expect(turnOnLightsInTopRow(input)).toEqual(expected);
   });
 });
@@ -49,7 +49,7 @@ describe("The second row of the Berlin Clock contains four lights, increasing ea
     ${8}  | ${"RRRO"} | ${"🔴🔴🔴⚫"}
     ${9}  | ${"RRRR"} | ${"🔴🔴🔴🔴"}
     ${10} | ${"OOOO"} | ${"⚫⚫⚫⚫"}
-  `("$input minutes --> $emoji", ({ input, expected }) => {
+  `("$input hours --> $emoji", ({ input, expected }) => {
     expect(turnOnLightsInSecondRow(input)).toEqual(expected);
   });
 });

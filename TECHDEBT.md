@@ -1,4 +1,4 @@
-- Give all magic numbers a name
+- Give all magic numbers a name 🍅
 - Turning the lights on based on number of on/off lights can be refactored to a seperate function
 - Extract out the O/Y/R strings to constants so they can be named
 - colourOfLightOnInThirdRow can be made more readable

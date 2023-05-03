@@ -1,14 +1,23 @@
 /* eslint-disable radix */
+function createLightString(lightSymbol, count) {
+  return lightSymbol.repeat(count);
+}
+
 function turnOnTheTopLight(numberOfSeconds) {
-  if (numberOfSeconds % 2 === 0) {
+  const secondsToggleInterval = 2;
+
+  if (numberOfSeconds % secondsToggleInterval === 0) {
     return "Y";
   }
   return "O";
 }
 
+
 function turnOnLightsInTopRow(numberOfHours) {
-  const numberOfLightsOn = Math.floor(numberOfHours / 5);
-  const numberOfLightsOff = 4 - numberOfLightsOn;
+  const numberOfLightsInTopRow = 4;
+  const hoursPerLight = 5;
+  const numberOfLightsOn = Math.floor(numberOfHours / hoursPerLight);
+  const numberOfLightsOff = numberOfLightsInTopRow - numberOfLightsOn;
 
   const onLights = "R".repeat(numberOfLightsOn);
   const offLights = "O".repeat(numberOfLightsOff);
@@ -17,17 +26,24 @@ function turnOnLightsInTopRow(numberOfHours) {
 }
 
 function turnOnLightsInSecondRow(numberOfHours) {
-  const numberOfLightsOn = numberOfHours % 5;
-  const numberOfLightsOff = 4 - numberOfLightsOn;
+  const numberOfLightsInSecondRow = 4;
+  const resetThreshold = 5;
 
-  const onLights = "R".repeat(numberOfLightsOn);
-  const offLights = "O".repeat(numberOfLightsOff);
+  const numberOfLightsOn = numberOfHours % resetThreshold;
+  const numberOfLightsOff = numberOfLightsInSecondRow - numberOfLightsOn;
+
+  const onLights = createLightString("R", numberOfLightsOn);
+  const offLights = createLightString("O", numberOfLightsOff);
 
   return onLights + offLights;
 }
 
+
 function colourOfLightOnInThirdRow(indexOfLight) {
-  return indexOfLight % 3 === 2 ? "R" : "Y";
+  const redLightInterval = 3;
+
+  const isRedLightPosition = (indexOfLight + 1) % redLightInterval === 0;
+  return isRedLightPosition ? "R" : "Y";
 }
 
 function turnOnLightsInThirdRow(numberOfMinutes) {
