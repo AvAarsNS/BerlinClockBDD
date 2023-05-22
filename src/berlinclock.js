@@ -12,7 +12,6 @@ function turnOnTheTopLight(numberOfSeconds) {
   return "O";
 }
 
-
 function turnOnLightsInTopRow(numberOfHours) {
   const numberOfLightsInTopRow = 4;
   const hoursPerLight = 5;
@@ -38,7 +37,6 @@ function turnOnLightsInSecondRow(numberOfHours) {
   return onLights + offLights;
 }
 
-
 function colourOfLightOnInThirdRow(indexOfLight) {
   const redLightInterval = 3;
 
@@ -47,10 +45,13 @@ function colourOfLightOnInThirdRow(indexOfLight) {
 }
 
 function turnOnLightsInThirdRow(numberOfMinutes) {
-  const onCount = Math.floor(numberOfMinutes / 5);
-  const lightsThirdRow = Array(11).fill("O");
+  const numberOfLightsInThirdRow = 11;
+  const minutesPerLight = 5;
 
-  for (let index = 0; index < 11; index += 1) {
+  const onCount = Math.floor(numberOfMinutes / minutesPerLight);
+  const lightsThirdRow = Array(numberOfLightsInThirdRow).fill("O");
+
+  for (let index = 0; index < numberOfLightsInThirdRow; index += 1) {
     if (index < onCount) {
       lightsThirdRow[index] = colourOfLightOnInThirdRow(index);
     }
@@ -59,8 +60,11 @@ function turnOnLightsInThirdRow(numberOfMinutes) {
 }
 
 function turnOnLightsInBottomRow(numberOfMinutes) {
-  const numberOfLightsOn = numberOfMinutes % 5;
-  const numberOfLightsOff = 4 - numberOfLightsOn;
+  const numberOfLightsInBottomRow = 4;
+  const resetThreshold = 5;
+
+  const numberOfLightsOn = numberOfMinutes % resetThreshold;
+  const numberOfLightsOff = numberOfLightsInBottomRow - numberOfLightsOn;
 
   const onLights = "Y".repeat(numberOfLightsOn);
   const offLights = "O".repeat(numberOfLightsOff);
