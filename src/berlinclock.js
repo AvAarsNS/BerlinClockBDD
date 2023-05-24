@@ -1,3 +1,7 @@
+const yellow = "Y";
+const red = "R";
+const off = "O";
+
 /* eslint-disable radix */
 function createLightString(lightSymbol, count) {
   return lightSymbol.repeat(count);
@@ -7,9 +11,9 @@ function turnOnTheTopLight(numberOfSeconds) {
   const secondsToggleInterval = 2;
 
   if (numberOfSeconds % secondsToggleInterval === 0) {
-    return "Y";
+    return yellow;
   }
-  return "O";
+  return off;
 }
 
 function turnOnLightsInTopRow(numberOfHours) {
@@ -18,8 +22,8 @@ function turnOnLightsInTopRow(numberOfHours) {
   const numberOfLightsOn = Math.floor(numberOfHours / hoursPerLight);
   const numberOfLightsOff = numberOfLightsInTopRow - numberOfLightsOn;
 
-  const onLights = "R".repeat(numberOfLightsOn);
-  const offLights = "O".repeat(numberOfLightsOff);
+  const onLights = red.repeat(numberOfLightsOn);
+  const offLights = off.repeat(numberOfLightsOff);
 
   return onLights + offLights;
 }
@@ -31,27 +35,25 @@ function turnOnLightsInSecondRow(numberOfHours) {
   const numberOfLightsOn = numberOfHours % resetThreshold;
   const numberOfLightsOff = numberOfLightsInSecondRow - numberOfLightsOn;
 
-  const onLights = createLightString("R", numberOfLightsOn);
-  const offLights = createLightString("O", numberOfLightsOff);
+  const onLights = createLightString(red, numberOfLightsOn);
+  const offLights = createLightString(off, numberOfLightsOff);
 
   return onLights + offLights;
 }
+
 
 function colourOfLightOnInThirdRow(indexOfLight) {
   const redLightInterval = 3;
 
   const isRedLightPosition = (indexOfLight + 1) % redLightInterval === 0;
-  return isRedLightPosition ? "R" : "Y";
+  return isRedLightPosition ? red : yellow;
 }
 
 function turnOnLightsInThirdRow(numberOfMinutes) {
-  const numberOfLightsInThirdRow = 11;
-  const minutesPerLight = 5;
+  const onCount = Math.floor(numberOfMinutes / 5);
+  const lightsThirdRow = Array(11).fill(off);
 
-  const onCount = Math.floor(numberOfMinutes / minutesPerLight);
-  const lightsThirdRow = Array(numberOfLightsInThirdRow).fill("O");
-
-  for (let index = 0; index < numberOfLightsInThirdRow; index += 1) {
+  for (let index = 0; index < 11; index += 1) {
     if (index < onCount) {
       lightsThirdRow[index] = colourOfLightOnInThirdRow(index);
     }
@@ -60,14 +62,11 @@ function turnOnLightsInThirdRow(numberOfMinutes) {
 }
 
 function turnOnLightsInBottomRow(numberOfMinutes) {
-  const numberOfLightsInBottomRow = 4;
-  const resetThreshold = 5;
+  const numberOfLightsOn = numberOfMinutes % 5;
+  const numberOfLightsOff = 4 - numberOfLightsOn;
 
-  const numberOfLightsOn = numberOfMinutes % resetThreshold;
-  const numberOfLightsOff = numberOfLightsInBottomRow - numberOfLightsOn;
-
-  const onLights = "Y".repeat(numberOfLightsOn);
-  const offLights = "O".repeat(numberOfLightsOff);
+  const onLights = yellow.repeat(numberOfLightsOn);
+  const offLights = off.repeat(numberOfLightsOff);
 
   return onLights + offLights;
 }
