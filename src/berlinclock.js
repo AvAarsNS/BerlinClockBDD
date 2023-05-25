@@ -2,9 +2,13 @@ const yellow = "Y";
 const red = "R";
 const off = "O";
 
+// TODO: Discuss with Michele, what to do when you create new "units" during refactor?
 /* eslint-disable radix */
-function createLightString(lightSymbol, count) {
-  return lightSymbol.repeat(count);
+function createLightString(onSymbol, numberOfLightsOn, numberOfLightsOff) {
+  const onLights = onSymbol.repeat(numberOfLightsOn);
+  const offLights = off.repeat(numberOfLightsOff);
+
+  return onLights + offLights;
 }
 
 function turnOnTheTopLight(numberOfSeconds) {
@@ -22,10 +26,7 @@ function turnOnLightsInTopRow(numberOfHours) {
   const numberOfLightsOn = Math.floor(numberOfHours / hoursPerLight);
   const numberOfLightsOff = numberOfLightsInTopRow - numberOfLightsOn;
 
-  const onLights = red.repeat(numberOfLightsOn);
-  const offLights = off.repeat(numberOfLightsOff);
-
-  return onLights + offLights;
+  return createLightString(red, numberOfLightsOn, numberOfLightsOff);
 }
 
 function turnOnLightsInSecondRow(numberOfHours) {
@@ -35,12 +36,8 @@ function turnOnLightsInSecondRow(numberOfHours) {
   const numberOfLightsOn = numberOfHours % resetThreshold;
   const numberOfLightsOff = numberOfLightsInSecondRow - numberOfLightsOn;
 
-  const onLights = createLightString(red, numberOfLightsOn);
-  const offLights = createLightString(off, numberOfLightsOff);
-
-  return onLights + offLights;
+  return createLightString(red, numberOfLightsOn, numberOfLightsOff);
 }
-
 
 function colourOfLightOnInThirdRow(indexOfLight) {
   const redLightInterval = 3;
@@ -65,10 +62,7 @@ function turnOnLightsInBottomRow(numberOfMinutes) {
   const numberOfLightsOn = numberOfMinutes % 5;
   const numberOfLightsOff = 4 - numberOfLightsOn;
 
-  const onLights = yellow.repeat(numberOfLightsOn);
-  const offLights = off.repeat(numberOfLightsOff);
-
-  return onLights + offLights;
+  return createLightString(yellow, numberOfLightsOn, numberOfLightsOff);
 }
 
 function berlinClock(hours, minutes, seconds) {
@@ -93,4 +87,9 @@ module.exports = {
   turnOnLightsInSecondRow,
   turnOnLightsInThirdRow,
   turnOnLightsInBottomRow,
+  constants: {
+    red,
+    yellow,
+    off,
+  },
 };

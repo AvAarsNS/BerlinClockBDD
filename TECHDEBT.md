@@ -14,7 +14,9 @@ Categories: security, duplication, coverage, code smells (not compliant with bes
 ---
 
 
-# TODO - DRY
-## 🧨
-- 🐶 | Create function turningTheLightsOn to inject into turnOnLights*
-🎈- 🐭 | Convert O/Y/R to constants
+# TODO
+
+| Size | Impact | Category     | Action
+|------|--------|--------------|--------
+| 🐭   | 🧨     | Code smell   | Convert O/Y/R to constants 🎉
+| 🐶   | 🧨     | Duplication  | Create function turningTheLightsOn to inject into turnOnLights 🎉
