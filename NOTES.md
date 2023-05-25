@@ -57,3 +57,11 @@ Atomic behaviors:
 18 --> RRRO 💡
 20 --> RRRR 💡
 24 --> RRRR 💡
+
+# Create Light String: create a light string that is compatible with all rows of the Berlin Clock
+
+Primary: 🟡
+Secondary: 😡
+Interval: 3
+11
+NumberOfLights: 11 --> 🟡🟡😡🟡🟡😡🟡🟡😡🟡🟡

@@ -39,15 +39,19 @@ function turnOnLightsInSecondRow(numberOfHours) {
   return createLightString(red, numberOfLightsOn, numberOfLightsOff);
 }
 
+function isRedLightPosition(indexOfLight, redLightInterval) {
+  return (indexOfLight + 1) % redLightInterval === 0;
+}
+
 function colourOfLightOnInThirdRow(indexOfLight) {
   const redLightInterval = 3;
 
-  const isRedLightPosition = (indexOfLight + 1) % redLightInterval === 0;
-  return isRedLightPosition ? red : yellow;
+  return isRedLightPosition(indexOfLight, redLightInterval) ? red : yellow;
 }
 
 function turnOnLightsInThirdRow(numberOfMinutes) {
-  const onCount = Math.floor(numberOfMinutes / 5);
+  const minutesPerLight = 5;
+  const onCount = Math.floor(numberOfMinutes / minutesPerLight);
   const lightsThirdRow = Array(11).fill(off);
 
   for (let index = 0; index < 11; index += 1) {

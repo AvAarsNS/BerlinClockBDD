@@ -4,7 +4,11 @@ const {
   turnOnLightsInThirdRow,
   turnOnLightsInBottomRow,
   turnOnLightsInTopRow,
+  createLightString,
+  constants,
 } = require("../src/berlinclock");
+
+const { yellow, red, off } = constants;
 
 describe("The top light of the Berlin Clock should only blink when the amount of seconds is even", () => {
   it("1 --> ⚫", () => {
@@ -91,5 +95,40 @@ describe("The bottom row of the Berlin Clock contains four lights, where each mi
     ${10} | ${"OOOO"} | ${"⚫⚫⚫⚫"}
   `("$input minutes --> $emoji", ({ input, expected }) => {
     expect(turnOnLightsInBottomRow(input)).toEqual(expected);
+  });
+});
+
+describe("The Berlin Clock consists of multiple rows, each with its own stupid rules determining wich lights are on and what the colors are...", () => {
+  it(`Primary: 🟡
+  Secondary: 😡
+  Interval: 3
+  11
+  NumberOfLights: 11 --> 🟡🟡😡🟡🟡😡🟡🟡😡🟡🟡`, () => {
+    const primaryLight = yellow;
+    const secondaryLight = red;
+    const interval = 3;
+    const numberOfLightsOn = 11;
+    const numberOfLights = 11;
+    const expected =
+      yellow +
+      yellow +
+      red +
+      yellow +
+      yellow +
+      red +
+      yellow +
+      yellow +
+      red +
+      yellow +
+      yellow;
+    expect(
+      createLightString(
+        primaryLight,
+        secondaryLight,
+        interval,
+        numberOfLightsOn,
+        numberOfLights
+      )
+    ).toEqual(expected);
   });
 });

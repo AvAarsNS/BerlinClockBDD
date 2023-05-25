@@ -20,3 +20,5 @@ Categories: security, duplication, coverage, code smells (not compliant with bes
 |------|--------|--------------|--------
 | 🐭   | 🧨     | Code smell   | Convert O/Y/R to constants 🎉
 | 🐶   | 🧨     | Duplication  | Create function turningTheLightsOn to inject into turnOnLights 🎉
+| 🐭   | 🤔     | readability  | colourOfLightOnInThirdRow can be made more readable 🎉
+| 🐭   | 🤔     | readability  | turnOnLightsInThirdRow can be made more readable, maybe with the separate function for turning on the lights 🤦‍♀️
