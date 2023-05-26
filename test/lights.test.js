@@ -4,7 +4,7 @@ const {
   turnOnLightsInThirdRow,
   turnOnLightsInBottomRow,
   turnOnLightsInTopRow,
-  createLightString,
+  createLightStringNew,
   constants,
 } = require("../src/berlinclock");
 
@@ -122,7 +122,7 @@ describe("The Berlin Clock consists of multiple rows, each with its own stupid r
       yellow +
       yellow;
     expect(
-      createLightString(
+      createLightStringNew(
         primaryLight,
         secondaryLight,
         interval,
