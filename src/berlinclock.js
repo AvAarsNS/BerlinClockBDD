@@ -11,27 +11,6 @@ function createLightString(onSymbol, numberOfLightsOn, numberOfLightsOff) {
   return onLights + offLights;
 }
 
-function createLightStringNew(
-  primaryLight,
-  secondaryLight,
-  interval,
-  numberOfLightsOn,
-  numberOfLights
-) {
-  let lightString = "";
-  for (let index = 0; index < numberOfLightsOn; index++) {
-    if ((index + 1) % interval === 0) {
-      lightString += secondaryLight;
-    } else {
-      lightString += primaryLight;
-    }
-  }
-  const numberOfLightsOff = numberOfLights - numberOfLightsOn;
-  const offLights = off.repeat(numberOfLightsOff);
-  lightString += offLights;
-  return lightString;
-}
-
 function turnOnTheTopLight(numberOfSeconds) {
   const secondsToggleInterval = 2;
 
@@ -112,7 +91,6 @@ module.exports = {
   turnOnLightsInSecondRow,
   turnOnLightsInThirdRow,
   turnOnLightsInBottomRow,
-  createLightStringNew,
   constants: {
     red,
     yellow,
