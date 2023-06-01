@@ -6,7 +6,7 @@ const {
   turnOnLightsInTopRow,
 } = require("../src/berlinclock");
 
-describe("The Berlin Clock can be used to tell the current time, in hours, minutes and seconds.", () => {
+describe("The Berlin Clock can be used to tell the current time, in hours, minutes and seconds. The clock is read from the top row to the bottom", () => {
   describe("The current hour is denoted by the two top rows:", () => {
     describe("The top row of the Berlin Clock contains four lights, increasing each 5 hours", () => {
       test.each`
@@ -28,7 +28,7 @@ describe("The Berlin Clock can be used to tell the current time, in hours, minut
       });
     });
 
-    describe("The second row of the Berlin Clock contains four lights, increasing each hour. This resets every 5 hours.", () => {
+    describe("The second row of the Berlin Clock contains four lights, increasing each hour. This resets every 5 hours and then a light in the top row turns on.", () => {
       test.each`
         input | expected  | emoji
         ${0}  | ${"OOOO"} | ${"⚫⚫⚫⚫"}
@@ -46,9 +46,17 @@ describe("The Berlin Clock can be used to tell the current time, in hours, minut
         expect(turnOnLightsInSecondRow(input)).toEqual(expected);
       });
     });
+    describe("The hour value is displayed in a 24-hour format. Combining the top two rows, we can tell the current hour", () => {
+      it(`When it is 12 o'clock, the top two rows look like this:
+          🔴🔴⚫⚫
+          🔴🔴⚫⚫`, () => {
+        expect(turnOnLightsInTopRow(12)).toEqual("RROO");
+        expect(turnOnLightsInSecondRow(12)).toEqual("RROO");
+      });
+    });
   });
-  describe("The current minute is denoted by the bottom top rows:", () => {
-    describe("The third row of the Berlin Clock contains eleven lights, increasing each 5 minutes", () => {
+  describe("The current minute is denoted by the bottom two rows:", () => {
+    describe("The third row of the Berlin Clock contains eleven yellow-and-red lights, increasing each 5 minutes. The red ones also denoting 15, 30 and 45 minutes past.", () => {
       test.each`
         input | expected         | emoji
         ${0}  | ${"OOOOOOOOOOO"} | ${"⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫"}
@@ -69,7 +77,7 @@ describe("The Berlin Clock can be used to tell the current time, in hours, minut
       });
     });
 
-    describe("The bottom row of the Berlin Clock contains four lights, where each minute an extra light turns on. Each 5 minutes this resets.", () => {
+    describe("The bottom row of the Berlin Clock contains four lights, where each minute an extra light turns on. Each 5 minutes this resets and a light in the top row turns on.", () => {
       test.each`
         input | expected  | emoji
         ${0}  | ${"OOOO"} | ${"⚫⚫⚫⚫"}
@@ -87,6 +95,14 @@ describe("The Berlin Clock can be used to tell the current time, in hours, minut
         expect(turnOnLightsInBottomRow(input)).toEqual(expected);
       });
     });
+    describe("Combining the bottom two rows, we can tell the current minute", () => {
+      it(`When it is 12:37, the bottom two rows look like this:
+          🟡🟡🔴🟡🟡🔴🟡⚫⚫⚫⚫
+                  🟡🟡⚫⚫`, () => {
+        expect(turnOnLightsInThirdRow(37)).toEqual("YYRYYRYOOOO");
+        expect(turnOnLightsInBottomRow(37)).toEqual("YYOO");
+      });
+    });
   });
   describe("The current second can not be distinguished, but you can tell that a second has passed by the top light:", () => {
     describe("The top light of the Berlin Clock should only blink when the amount of seconds is even", () => {
@@ -99,3 +115,4 @@ describe("The Berlin Clock can be used to tell the current time, in hours, minut
     });
   });
 });
+

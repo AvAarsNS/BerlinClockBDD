@@ -2,7 +2,6 @@ const yellow = "Y";
 const red = "R";
 const off = "O";
 
-// TODO: Discuss with Michele, what to do when you create new "units" during refactor?
 /* eslint-disable radix */
 function createLightString(onSymbol, numberOfLightsOn, numberOfLightsOff) {
   const onLights = onSymbol.repeat(numberOfLightsOn);
